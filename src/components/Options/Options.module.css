@@ -1,0 +1,15 @@
+.list {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+.btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 18px;
+    border: 2px solid #aaa6a6;
+    transition: .3s;
+}
+.btn:hover {
+    border-color: #5e5e5e;
+}
