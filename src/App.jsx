@@ -1,4 +1,5 @@
 import './App.css'
+import Description from './components/Description/Description';
 import Feedback from './components/Feedback/Feedback'
 import Notification from './components/Notification/Notification';
 import Options from './components/Options/Options'
@@ -23,9 +24,11 @@ const App = () => {
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
   const resetFeedback = () => {
-    const initialState = { good: 0, neutral: 0, bad: 0 };
-    setFeedback(initialState);
-    localStorage.setItem('feedback', JSON.stringify(initialState));
+    setFeedback({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
   }
 
   const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
@@ -33,8 +36,7 @@ const App = () => {
   return (
     <main className='main'>
       <div className="container">
-        <h1 className='title'>Sip Happens Café</h1>
-        <p className='text'>Please leave your feedback about our service by selecting one of the options below.</p>
+        <Description/>
         <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} resetFeedback={resetFeedback} />
         {totalFeedback ? <Feedback feedback={feedback} totalFeedback={totalFeedback} positiveFeedback={positiveFeedback}/> : <Notification/>}
       </div>
